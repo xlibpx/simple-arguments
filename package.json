@@ -1,0 +1,57 @@
+{
+  "name": "simple-arguments",
+  "version": "0.0.0-1",
+  "description": "Arguments parser",
+  "type": "module",
+  "main": "cjs/index.js",
+  "module":"mjs/index.js",
+  "types":"types/index.d.ts",
+  "exports":{
+    ".":{"import":"./mjs/index.js","require":"./cjs/index.js","types":"./types/index.d.ts"}
+  },
+
+  "scripts": {
+    "tsc": "tsc",
+    "copy-package-json":"cp package.json ./lib",
+
+    "tsc-cjs": "tsc --project ./tsconfig-cjs.json",
+    "cjs-package-json":"echo '{\"type\": \"commonjs\"}'>./lib/cjs/package.json",
+
+    "build-cjs":"npm run tsc-cjs && npm run cjs-package-json",
+    "build": "npm run tsc && npm run copy-package-json && npm run build-cjs",
+
+    "prepublish-script": "npm run build",
+    "publish-script":" npm publish ./lib --access public",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xlibpx/simple-arguments.git"
+  },
+  "keywords": [
+    "args"
+  ],
+
+  "author": "Kevin Cobian",
+  "license": "MIT",
+
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.9.1",
+    "@typescript-eslint/parser": "^5.9.1",
+    "eslint": "^8.6.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-regexp": "^1.5.1",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "eslint-plugin-unicorn": "^40.0.0",
+    "prettier": "^2.5.1",
+    "prettier-eslint": "^13.0.0",
+    "typescript": "^4.5.4"
+  },
+  "bugs": {
+    "url": "https://github.com/xlibpx/simple-arguments/issues"
+  },
+  "homepage": "https://github.com/xlibpx/simple-arguments"
+}

@@ -1,0 +1,40 @@
+{
+  "env": {
+    "browser": false,
+    "node": true,
+    "commonjs": false
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "unicorn",
+    "simple-import-sort",
+    "prettier"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:unicorn/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+
+  "rules": {
+    "camelcase": ["error", { "properties": "always" }],
+    "quotes": [
+      "error",
+      "double",
+      { "avoidEscape": true, "allowTemplateLiterals": true }
+    ],
+    "unicorn/filename-case": ["error", { "cases": { "camelCase": true } }],
+    "sonarjs/no-duplicate-string": "off",
+    "prettier/prettier": "warn",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    //commonjs rules
+    "@typescript-eslint/no-var-requires": "off",
+    "unicorn/prefer-module": "off"
+  }
+}
